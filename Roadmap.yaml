@@ -7,7 +7,7 @@ Phase1:
     - week: 1
       title: "**Week 1: Initial Setup**"
       days:
-        - day: 1
+        - day: 1✅
           title: "**Day 1 (Today): Install and Initialize Project**"
           tasks:
             - Install **Node.js** and **npm** (if not already installed). ✅
@@ -20,8 +20,8 @@ Phase1:
                 - **Backend**: Express.js, Mongoose (MongoDB ORM).✅
                 - **Utilities**: dotenv (for environment variables), nodemon (for backend auto-reloading).✅
             - Test the setup:
-                - Run `npm start` for the frontend and `nodemon` for the backend.
-            - Commit the setup to a Git repository.
+                - Run `npm start` for the frontend and `nodemon` for the backend.✅
+            - Commit the setup to a Git repository.✅
         - day: 2
           title: "**Day 2: Plan Project Structure**"
           tasks:
