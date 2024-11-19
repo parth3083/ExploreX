@@ -1,0 +1,71 @@
+Phase1:
+  title: "**Phase 1: Setting Up the Foundation**"
+  description: >
+    In Phase 1, the focus is on setting up the core environment, planning the initial structure, and creating basic templates for the project. 
+    This phase is essential for laying the groundwork for the rest of the project. Here's the breakdown:
+  weeks:
+    - week: 1
+      title: "**Week 1: Initial Setup**"
+      days:
+        - day: 1
+          title: "**Day 1 (Today): Install and Initialize Project**"
+          tasks:
+            - Install **Node.js** and **npm** (if not already installed). ✅
+            - Install **Visual Studio Code (VS Code)** or any preferred code editor.✅
+            - Set up the project structure:
+                - Create a new project folder (e.g., `EducateX`).✅
+                - Initialize the project with `npm init` to create a `package.json` file.✅
+            - Install essential dependencies:
+                - **Frontend**: React, Vite/Next.js, Tailwind CSS (for styling), Axios (for API calls).✅
+                - **Backend**: Express.js, Mongoose (MongoDB ORM).✅
+                - **Utilities**: dotenv (for environment variables), nodemon (for backend auto-reloading).✅
+            - Test the setup:
+                - Run `npm start` for the frontend and `nodemon` for the backend.
+            - Commit the setup to a Git repository.
+        - day: 2
+          title: "**Day 2: Plan Project Structure**"
+          tasks:
+            - Define the folder structure for the frontend and backend:
+                - Frontend: `/src/components`, `/src/pages`, `/src/styles`.
+                - Backend: `/routes`, `/models`, `/controllers`.
+            - Create a shared `.env` file for environment variables (e.g., database connection strings, API keys).
+            - Write a project README.md with the project's objective, tech stack, and roadmap.
+        - day: 3
+          title: "**Day 3: Integrate Tailwind CSS**"
+          tasks:
+            - Install Tailwind CSS:
+                - Follow the installation guide for React or Next.js.
+            - Create a `tailwind.config.js` file.
+            - Test Tailwind by creating a sample component with Tailwind classes:
+                - Example: A button styled with Tailwind.
+            - Set up a global CSS file for consistent styling.
+        - day: 4
+          title: "**Day 4: Set Up MongoDB**"
+          tasks:
+            - Install MongoDB locally or use **MongoDB Atlas** for cloud storage.
+            - Create a database named `educatex`.
+            - Set up a connection in the backend:
+                - Install Mongoose: `npm install mongoose`.
+                - Write a `db.js` file to handle the database connection.
+            - Test the database connection.
+        - day: 5
+          title: "**Day 5: Create Basic Backend API**"
+          tasks:
+            - Write a simple Express server in `server.js`:
+                - Create a route (e.g., `/api/test`) that returns a sample JSON response.
+            - Test the route using Postman or a browser.
+        - day: 6
+          title: "**Day 6: Basic Homepage Template**"
+          tasks:
+            - Create the basic layout for the homepage in React:
+                - Add a `Header` component with the logo and navbar.
+                - Add a placeholder search bar in the center.
+            - Use Tailwind to style the components with a modern look.
+        - day: 7
+          title: "**Day 7: Finalize Loading Page**"
+          tasks:
+            - Create a `LoadingPage` component:
+                - Add a spinner animation using Tailwind.
+                - Style it with a minimal design.
+            - Integrate the loading page into the homepage:
+                - Show the loading page for 2–3 seconds before rendering the homepage.
