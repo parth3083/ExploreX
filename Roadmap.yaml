@@ -48,12 +48,12 @@ Phase1:
                 - Install Mongoose: `npm install mongoose`.✅
                 - Write a `db.js` file to handle the database connection. ✅
             - Test the database connection. ✅
-        - day: 5
+        - day: 5 ✅
           title: "**Day 5: Create Basic Backend API**"
           tasks:
-            - Write a simple Express server in `server.js`:
-                - Create a route (e.g., `/api/test`) that returns a sample JSON response.
-            - Test the route using Postman or a browser.
+            - Write a simple Express server in `server.js`: ✅
+                - Create a route (e.g., `/api/test`) that returns a sample JSON response. ✅
+            - Test the route using Postman or a browser. ✅
         - day: 6
           title: "**Day 6: Basic Homepage Template**"
           tasks:
