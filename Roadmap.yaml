@@ -39,15 +39,15 @@ Phase1:
             - Test Tailwind by creating a sample component with Tailwind classes:✅
                 - Example: A button styled with Tailwind.✅
             - Set up a global CSS file for consistent styling.✅
-        - day: 4
+        - day: 4✅
           title: "**Day 4: Set Up MongoDB**"
           tasks:
-            - Install MongoDB locally or use **MongoDB Atlas** for cloud storage.
+            - Install MongoDB locally or use **MongoDB Atlas** for cloud storage.✅
             - Create a database named `educatex`.
-            - Set up a connection in the backend:
-                - Install Mongoose: `npm install mongoose`.
-                - Write a `db.js` file to handle the database connection.
-            - Test the database connection.
+            - Set up a connection in the backend: ✅
+                - Install Mongoose: `npm install mongoose`.✅
+                - Write a `db.js` file to handle the database connection. ✅
+            - Test the database connection. ✅
         - day: 5
           title: "**Day 5: Create Basic Backend API**"
           tasks:

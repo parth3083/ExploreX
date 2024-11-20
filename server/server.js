@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
+const connectDb = require("./config/db");
 
 const app = express();
 app.use(express.json());
@@ -9,6 +10,7 @@ app.use(
     origin: "http://localhost:3000",
   })
 );
+connectDb();
 
 app.get("/", (req, res) => {
   res.send("Backend started working!!!");

@@ -4,7 +4,7 @@ import Image from "next/image";
 
 function Loading() {
   return (
-    <main className="loading-bg w-full h-screen relative  flex items-center justify-center">
+    <main className="loading-bg w-full h-screen relative transition-all ease-in-out duration-300 flex items-center justify-center">
       <Image
         src={image1}
         width={800}
