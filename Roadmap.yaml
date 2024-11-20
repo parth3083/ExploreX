@@ -22,14 +22,14 @@ Phase1:
             - Test the setup:
                 - Run `npm start` for the frontend and `nodemon` for the backend.✅
             - Commit the setup to a Git repository.✅
-        - day: 2
+        - day: 2✅
           title: "**Day 2: Plan Project Structure**"
           tasks:
             - Define the folder structure for the frontend and backend:
-                - Frontend: `/src/components`, `/src/pages`, `/src/styles`.
-                - Backend: `/routes`, `/models`, `/controllers`.
-            - Create a shared `.env` file for environment variables (e.g., database connection strings, API keys).
-            - Write a project README.md with the project's objective, tech stack, and roadmap.
+                - Frontend: `/src/components`, `/src/pages`, `/src/styles`.✅
+                - Backend: `/routes`, `/models`, `/controllers`.✅
+            - Create a shared `.env` file for environment variables (e.g., database connection strings, API keys).✅
+            - Write a project README.md with the project's objective, tech stack, and roadmap.✅
         - day: 3
           title: "**Day 3: Integrate Tailwind CSS**"
           tasks:
