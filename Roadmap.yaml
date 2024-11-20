@@ -30,15 +30,15 @@ Phase1:
                 - Backend: `/routes`, `/models`, `/controllers`.✅
             - Create a shared `.env` file for environment variables (e.g., database connection strings, API keys).✅
             - Write a project README.md with the project's objective, tech stack, and roadmap.✅
-        - day: 3
+        - day: 3✅
           title: "**Day 3: Integrate Tailwind CSS**"
           tasks:
-            - Install Tailwind CSS:
+            - Install Tailwind CSS:✅
                 - Follow the installation guide for React or Next.js.
-            - Create a `tailwind.config.js` file.
-            - Test Tailwind by creating a sample component with Tailwind classes:
-                - Example: A button styled with Tailwind.
-            - Set up a global CSS file for consistent styling.
+            - Create a `tailwind.config.js` file.✅
+            - Test Tailwind by creating a sample component with Tailwind classes:✅
+                - Example: A button styled with Tailwind.✅
+            - Set up a global CSS file for consistent styling.✅
         - day: 4
           title: "**Day 4: Set Up MongoDB**"
           tasks:

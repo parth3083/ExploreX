@@ -8,7 +8,9 @@ function MaxWidth({
   className?: string;
 }) {
   return (
-    <div className={`max-w-7xl min-h-screen mx-auto bg-green-500 overflow-hidden ${className}`}>
+    <div
+      className={`lg:max-w-7xl w-full md:w-full min-h-screen mx-auto overflow-hidden  ${className}`}
+    >
       {children}
     </div>
   );
