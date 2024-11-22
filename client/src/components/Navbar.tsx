@@ -14,13 +14,13 @@ function Navbar() {
       <div className="right flex items-center md:gap-10 gap-4 lg:gap-10 ">
         <Link
           href={"/about"}
-          className="font-pop text-md lg:text-xl lowercase  no-underline hover:underline  transition ease-in-out duration-300 md:text-xl font-medium"
+          className="font-pop text-md lg:text-lg  lowercase  no-underline hover:underline  transition ease-in-out duration-300 md:text-xl font-medium"
         >
           About
         </Link>
         <Link
           href={"/contact"}
-          className="font-pop text-md lg:text-xl lowercase no-underline hover:underline  transition ease-in-out duration-300 md:text-xl font-medium"
+          className="font-pop text-md lg:text-lg  lowercase no-underline hover:underline  transition ease-in-out duration-300 md:text-xl font-medium"
         >
           Contact Us
         </Link>

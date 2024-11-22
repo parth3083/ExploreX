@@ -61,11 +61,11 @@ Phase1:
                 - Add a `Header` component with the logo and navbar. ✅
                 - Add a placeholder search bar in the center. ✅
             - Use Tailwind to style the components with a modern look. ✅
-        - day: 7
+        - day: 7 ✅
           title: "**Day 7: Finalize Loading Page**"
           tasks:
-            - Create a `LoadingPage` component:
-                - Add a spinner animation using Tailwind.
-                - Style it with a minimal design.
-            - Integrate the loading page into the homepage:
-                - Show the loading page for 2–3 seconds before rendering the homepage.
+            - Create a `LoadingPage` component: ✅
+                - Add a spinner animation using Tailwind. ✅
+                - Style it with a minimal design. ✅
+            - Integrate the loading page into the homepage: ✅
+                - Show the loading page for 2–3 seconds before rendering the homepage. ✅
