@@ -54,13 +54,13 @@ Phase1:
             - Write a simple Express server in `server.js`: ✅
                 - Create a route (e.g., `/api/test`) that returns a sample JSON response. ✅
             - Test the route using Postman or a browser. ✅
-        - day: 6
-          title: "**Day 6: Basic Homepage Template**"
+        - day: 6 ✅
+          title: "**Day 6: Basic Homepage Template**" ✅ 
           tasks:
-            - Create the basic layout for the homepage in React:
-                - Add a `Header` component with the logo and navbar.
-                - Add a placeholder search bar in the center.
-            - Use Tailwind to style the components with a modern look.
+            - Create the basic layout for the homepage in React: ✅
+                - Add a `Header` component with the logo and navbar. ✅
+                - Add a placeholder search bar in the center. ✅
+            - Use Tailwind to style the components with a modern look. ✅
         - day: 7
           title: "**Day 7: Finalize Loading Page**"
           tasks:

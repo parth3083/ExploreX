@@ -13,8 +13,8 @@ import { Card, CardContent } from "@/components/ui/card";
 
 function CarouselSection() {
   return (
-    <div className="w-full px-3">
-      <h1 className="font-pop text-3xl font-semibold">Trending topics {">"}</h1>
+    <div className="w-full px-5">
+      <h1 className="font-pop text-3xl font-medium">Trending topics {">"}</h1>
       <div className="w-full flex items-center  justify-center ">
         <Carousel
           className="w-full max-w-xs"
