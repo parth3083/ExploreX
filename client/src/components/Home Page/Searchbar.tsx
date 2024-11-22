@@ -3,6 +3,9 @@ import React from "react";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { useAppDispatch } from "@/redux/hooks";
+import { setQuery, fetchYoutbeVideo } from "../../redux/slices/searchSlice";
+import { useRouter } from "next/navigation";
 
 type SearchFormValues = {
   query: string;
@@ -10,9 +13,16 @@ type SearchFormValues = {
 
 function Searchbar() {
   const { register, handleSubmit, reset } = useForm<SearchFormValues>();
+  const dispatch = useAppDispatch();
+  const router = useRouter();
 
   const onSubmit: SubmitHandler<SearchFormValues> = (data) => {
-    console.log(data);
+    const { query } = data;
+    dispatch(setQuery(query));
+    dispatch(fetchYoutbeVideo(query)).then(() => {
+      router.push('/results')
+    })
+    console.log(query);
     reset();
   };
 

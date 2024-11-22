@@ -5,6 +5,8 @@ import Navbar from "@/components/Navbar";
 import MaxWidth from "@/components/MaxWidth";
 import ClientWrapper from "@/components/ClientWrapper";
 import { ThemeProvider } from "@/components/theme-provider";
+import { StoreProvider } from "@/redux/StoreProvider";
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -28,24 +30,29 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <StoreProvider>
+
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+        >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
-        >
+          >
+
           <ClientWrapper>
             <MaxWidth>
               <Navbar />
               {children}
             </MaxWidth>
           </ClientWrapper>
+
         </ThemeProvider>
       </body>
     </html>
+          </StoreProvider>
   );
 }
