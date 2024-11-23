@@ -6,7 +6,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { useAppDispatch } from "@/redux/hooks";
 import { setQuery, fetchYoutubeVideos } from "../../redux/slices/searchSlice";
 import { useRouter } from "next/navigation";
-import axios from "axios"
+import axios from "axios";
 
 type SearchFormValues = {
   query: string;
@@ -17,28 +17,28 @@ function Searchbar() {
   const dispatch = useAppDispatch();
   const router = useRouter();
 
-  const searchCount = async (query:string) => {
-  try {
-    const response = await axios.post("http://localhost:8000/search-count", { query })
-    console.log(response.data);
-  } catch (error) {
-    console.log(error);
-  }
-}
+  const searchCount = async (query: string) => {
+    try {
+      const response = await axios.post("/api/searchCount", { query });
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const onSubmit: SubmitHandler<SearchFormValues> = (data) => {
-try {
-  const { query } = data;
-  searchCount(query);
-  dispatch(setQuery(query));
-  dispatch(fetchYoutubeVideos(query)).then(() => {
-    router.push('/results')
-  })
-  console.log(query);
-  reset();
-} catch (error) {
-  console.error(error);
-}
+    try {
+      const { query } = data;
+      searchCount(query);
+      dispatch(setQuery(query));
+      dispatch(fetchYoutubeVideos(query)).then(() => {
+        router.push("/results");
+      });
+      console.log(query);
+      reset();
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
