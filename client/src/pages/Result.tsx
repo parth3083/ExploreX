@@ -8,16 +8,19 @@ function Result() {
   const { results, loading, error } = useSelector(
     (state: RootState) => state.search
   );
-  // const {output} = useSelector(
-  //   (state: RootState) => state.googleSearch
-  // );
+
   const output = useSelector((state: RootState) => state.googleSearch.output);
 
-  // Safely access filteredResults if output is not null
-  const filteredResults = Array.isArray(output?.filteredResults) ? output.filteredResults : [];
+  const filteredResults = Array.isArray(output?.filteredResults)
+    ? output.filteredResults
+    : [];
 
-  
-  console.log("This is the console log from the results.tsx file ",filteredResults)
+  const blogs = useSelector((state: RootState) => state.blogSearch.blogs);
+  const blogResults = Array.isArray(blogs?.blogResults)
+    ? blogs.blogResults
+    : [];
+
+  console.log("This is the output of the results.tsx ", blogResults);
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
@@ -33,7 +36,7 @@ function Result() {
         <TabsContent value="Videos">
           {" "}
           <div className="p-6">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {results.map((video: any, ind) => (
                 <div
                   key={ind}
@@ -59,29 +62,49 @@ function Result() {
             </div>
           </div>
         </TabsContent>
-        <TabsContent value="blog">Change your password here.</TabsContent>
+        <TabsContent value="blogs">
+          <div className="p-6">
+            {blogResults.length > 0 ? (
+              <div className="space-y-4">
+                {blogResults.map((result: any, index) => (
+                  <div key={index} className="border-b pb-4">
+                    <a
+                      href={result.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-lg font-semibold text-blue-600 hover:underline"
+                    >
+                      {result.title}
+                    </a>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <h1>No websites found.</h1>
+            )}
+          </div>
+        </TabsContent>
         <TabsContent value="websites">
-        <div className="p-6">
-  {Array.isArray(filteredResults) && filteredResults.length > 0 ? (
-    <div className="space-y-4">
-      {filteredResults.map((result, index) => (
-        <div key={index} className="border-b pb-4">
-          <a
-            href={result.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-lg font-semibold text-blue-600 hover:underline"
-          >
-            {result.title}
-          </a>
-
-        </div>
-      ))}
-    </div>
-  ) : (
-    <h1>No websites found.</h1>
-  )}
-</div>
+          <div className="p-6">
+            {Array.isArray(filteredResults) && filteredResults.length > 0 ? (
+              <div className="space-y-4">
+                {filteredResults.map((result, index) => (
+                  <div key={index} className="border-b pb-4">
+                    <a
+                      href={result.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-lg font-semibold text-blue-600 hover:underline"
+                    >
+                      {result.title}
+                    </a>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <h1>No websites found.</h1>
+            )}
+          </div>
         </TabsContent>
       </Tabs>
     </div>

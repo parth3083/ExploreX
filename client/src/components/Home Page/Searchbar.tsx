@@ -8,6 +8,7 @@ import { setQuery, fetchYoutubeVideos } from "../../redux/slices/searchSlice";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { fetchGoogleSearchResults } from "@/redux/slices/googleSearchSlice";
+import { fetchBlogSearchResults } from "@/redux/slices/blogSearchSlice";
 
 type SearchFormValues = {
   query: string;
@@ -34,7 +35,9 @@ function Searchbar() {
       dispatch(setQuery(query));
       dispatch(fetchYoutubeVideos(query)).then(() => {
         dispatch(fetchGoogleSearchResults(query)).then(() => {
-          router.push("/results");
+          dispatch(fetchBlogSearchResults(query)).then(() => { 
+            router.push("/results");
+          })
         })
         
       });

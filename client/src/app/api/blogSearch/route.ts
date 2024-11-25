@@ -20,11 +20,11 @@ export async function POST(request: Request) {
       "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
     );
     const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(
-      query
+      query + " inurl:blog"
     )}&hl=en&gl=us&num=20`;
     await page.goto(searchUrl, { waitUntil: "networkidle2" });
 
-    const results = await page.evaluate(() => {
+    const blogResults = await page.evaluate(() => {
       const elements = document.querySelectorAll(".tF2Cxc");
       return Array.from(elements).map((el) => {
         const title = el.querySelector("h3")?.innerText || "No title";
@@ -35,13 +35,7 @@ export async function POST(request: Request) {
     });
     await browser.close();
 
-    //FILTERING OUT THE BLOG WEBSITE FROM THE WEB SCRAPPING
-    const blogKeywords = ["blog", "wordpress", "medium", "tumblr", "blogger"];
-    const filteredResults = results.filter((result) => {
-      return !blogKeywords.some((keyword) => result.link.includes(keyword));
-    });
-
-    return Response.json({ filteredResults });
+    return Response.json({ blogResults });
   } catch (error) {
     if (error instanceof z.ZodError) {
       return Response.json({
