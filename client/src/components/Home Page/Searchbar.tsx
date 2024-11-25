@@ -31,15 +31,20 @@ function Searchbar() {
   const onSubmit: SubmitHandler<SearchFormValues> = (data) => {
     try {
       const { query } = data;
-      // searchCount(query);
-      dispatch(setQuery(query));
-      dispatch(fetchYoutubeVideos(query)).then(() => {
-        dispatch(fetchGoogleSearchResults(query)).then(() => {
-          dispatch(fetchBlogSearchResults(query)).then(() => { 
-            router.push("/results");
-          })
-        })
-        
+      dispatch(setQuery(query))
+      searchCount(query)
+      .then(() => 
+        Promise.all([
+          dispatch(fetchYoutubeVideos(query)),
+          dispatch(fetchGoogleSearchResults(query)),
+          dispatch(fetchBlogSearchResults(query))
+        ])
+      )
+      .then(() => {
+        router.push("/results");
+      })
+      .catch((error) => {
+        console.error("Error occurred:", error);
       });
       reset();
     } catch (error) {

@@ -1,4 +1,4 @@
-import mongoose, { Schema, Document } from "mongoose";
+import mongoose, { Schema, Document, Model } from "mongoose";
 
 interface Isearch extends Document {
   topic: string;
@@ -22,5 +22,7 @@ const searhSchema: Schema = new Schema(
   }
 );
 
-const searchModel = mongoose.model<Isearch>("SearchData", searhSchema);
+const searchModel: Model<Isearch> =
+  mongoose.models.SearchData || mongoose.model<Isearch>('SearchData', searhSchema);
+
 export default searchModel;
