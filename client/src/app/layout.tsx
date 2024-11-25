@@ -6,6 +6,7 @@ import MaxWidth from "@/components/MaxWidth";
 import ClientWrapper from "@/components/ClientWrapper";
 import { ThemeProvider } from "@/components/theme-provider";
 import { StoreProvider } from "@/redux/StoreProvider";
+import LenisScroll from "./LenisScroll";
 
 
 const geistSans = localFont({
@@ -36,6 +37,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
+           <LenisScroll />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

@@ -1,7 +1,8 @@
+import Contact from "@/pages/Contact";
 import React from "react";
 
 function page() {
-  return <div>This is contact page </div>;
+  return <Contact/>;
 }
 
 export default page;
