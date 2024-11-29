@@ -6,7 +6,7 @@ function Navbar() {
   return (
     <nav className="w-full h-12 mt-5 flex items-center justify-between lg:px-3 md:px-10 px-2">
       <Link
-        href={"/"}
+        href={"/home"}
         className="font-pop text-2xl md:text-3xl lg:text-3xl font-semibold"
       >
         ExploreX.

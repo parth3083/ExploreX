@@ -11,7 +11,6 @@ import {
 } from "@/components/ui/card";
 import { howitworksdata } from "@/utils/Howitworks";
 
-
 function HowItWorks() {
   return (
     <div className="mt-20 w-full flex items-center flex-col font-pop">
@@ -33,7 +32,10 @@ function HowItWorks() {
 
       <div className="w-full mt-10 md:flex-col md:gap-5 lg:flex-row flex flex-col items-center justify-between">
         {howitworksdata.map((items, index) => (
-          <Card key={index} className="lg:w-[32%] md:w-[70%] w-full h-56 flex flex-col    items-center">
+          <Card
+            key={index}
+            className="lg:w-[32%] md:w-[70%] w-full h-56 flex flex-col    items-center"
+          >
             <CardHeader>
               <Badge variant="secondary" className="w-fit">
                 0{index + 1}
@@ -42,8 +44,7 @@ function HowItWorks() {
               <CardDescription className="mt-3 text-sm">
                 {items.des}
               </CardDescription>
-                </CardHeader>
-                
+            </CardHeader>
           </Card>
         ))}
       </div>
