@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import GridPattern from "@/components/ui/grid-pattern";
 import CardElement from "@/components/Landing Page/CardElement";
+import HowItWorks from "@/components/Landing Page/HowItWorks";
 
 function LandingPage() {
   return (
@@ -8,7 +9,8 @@ function LandingPage() {
     {/* <p className="z-10 whitespace-pre-wrap text-center text-5xl font-medium tracking-tighter text-black dark:text-white">
       Grid Pattern
     </p> */}
-          <CardElement/>
+      <CardElement />
+      <HowItWorks/>
     <GridPattern
       width={30}
       height={30}
