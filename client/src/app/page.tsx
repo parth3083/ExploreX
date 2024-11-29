@@ -1,9 +1,9 @@
-import HomePage from "@/pages/HomePage";
+import LandingPage from "@/pages/LandingPage";
 import React from "react";
 
 function page() {
   return (
-    <HomePage/>
+    <LandingPage/>
   );
 }
 

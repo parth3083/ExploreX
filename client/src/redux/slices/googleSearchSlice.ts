@@ -23,10 +23,9 @@ export const fetchGoogleSearchResults = createAsyncThunk(
                     'Content-Type': 'application/json'
                 }
             })
-            // console.log("This is the output of the googleSearchSlice : ",response.data)
             return response.data;
         } catch (error:any) {
-            console.error("Error fetching Google search results:", error); // Log the error
+            console.error("Error fetching Google search results:", error); 
       return rejectWithValue(error.response?.data || error.message);
         }
     }
