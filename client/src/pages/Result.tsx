@@ -67,12 +67,15 @@ function Result() {
             {blogResults.length > 0 ? (
               <div className="space-y-4">
                 {blogResults.map((result: any, index) => (
-                  <div key={index} className="border-b pb-4">
+                  <div
+                    key={index}
+                    className="border rounded-md  hover:text-blue-600 hover:shadow-gray-600 hover:shadow-md transition-all ease-in-out duration-300 p-4"
+                  >
                     <a
                       href={result.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-lg font-semibold text-blue-600 hover:underline"
+                      className="text-lg font-semibold  hover:underline"
                     >
                       {result.title}
                     </a>
@@ -89,12 +92,15 @@ function Result() {
             {Array.isArray(filteredResults) && filteredResults.length > 0 ? (
               <div className="space-y-4">
                 {filteredResults.map((result, index) => (
-                  <div key={index} className="border-b pb-4">
+                  <div
+                    key={index}
+                    className="border rounded-md  hover:text-blue-600 hover:shadow-gray-600 hover:shadow-md transition-all ease-in-out duration-300 p-4"
+                  >
                     <a
                       href={result.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-lg font-semibold text-blue-600 hover:underline"
+                      className="text-lg font-semibold  hover:underline"
                     >
                       {result.title}
                     </a>
