@@ -47,9 +47,9 @@ function Contact() {
     }
   }
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    action(values);
     try {
+      action(values);
+      reset();
     } catch (error) {
       console.error(error);
     }

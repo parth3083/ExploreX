@@ -4,6 +4,7 @@ interface Inews extends Document {
   todaysNews: [];
   thisWeeksNews: [];
   thisMonthsNews: [];
+  trendingTopics: [];
   lastUpdated: Date;
 }
 
@@ -25,6 +26,12 @@ const newSchema: Schema = new Schema({
       title: String,
       imageUrl: String,
     },
+  ],
+  trendingTopics: [
+    {
+      imageUrl: String,
+      title: String,
+    }
   ],
   lastUpated: {
     type: Date,
