@@ -33,5 +33,5 @@ const newSchema: Schema = new Schema({
 });
 
 const NewsModel: Model<Inews> =
-  mongoose.models.mews || mongoose.model<Inews>("news", newSchema);
+  mongoose.models.NewsData || mongoose.model<Inews>("NewsData", newSchema);
 export default NewsModel;
