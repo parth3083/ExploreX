@@ -36,11 +36,11 @@ function Result() {
         <TabsContent value="Videos">
           {" "}
           <div className="p-6">
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4  gap-6">
               {results.map((video: any, ind) => (
                 <div
                   key={ind}
-                  className="p-2 border border-zinc-700 rounded-md"
+                  className="p-2 border border-zinc-300 transition-all ease-in-out duration-300 hover:shadow-md hover:shadow-zinc-600 rounded-md"
                 >
                   <img
                     src={video.snippet.thumbnails.medium.url}
