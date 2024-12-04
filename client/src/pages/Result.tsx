@@ -40,7 +40,7 @@ function Result() {
               {results.map((video: any, ind) => (
                 <div
                   key={ind}
-                  className="p-2 border border-zinc-300 transition-all ease-in-out duration-300 hover:shadow-md hover:shadow-zinc-600 rounded-md"
+                  className="p-2 border border-zinc-300 transition-all ease-in-out duration-300 hover:shadow-lg hover:shadow-zinc-600 rounded-md"
                 >
                   <img
                     src={video.snippet.thumbnails.medium.url}

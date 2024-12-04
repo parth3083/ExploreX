@@ -1,6 +1,6 @@
 import axios from "axios";
 import NewsModel from "@/models/news";
-import { title } from "process";
+import dbConnect from "@/lib/dbConnect";
 
 interface NewsArticle {
   title: string;
@@ -12,40 +12,56 @@ interface NewsItems {
   thisWeeksNews: NewsArticle[];
   thisMonthsNews: NewsArticle[];
 }
-
 async function fetchNews(apiKey: string): Promise<NewsItems> {
-  const currentDate = new Date();
-  const today = currentDate.toISOString().split("T")[0];
-  const url = `https://newsapi.org/v2/everything?from=${today}&to=${today}&sortBy=publishedAt&pageSize=10&apiKey=${apiKey}`;
+  const defaultImage = "there_is_an_image.jpg"; // Default image URL for missing images
 
-  const response = await axios.get(url);
+  // Default empty structure for NewsItems
+  const defaultNews: NewsItems = {
+    todaysNews: [],
+    thisWeeksNews: [],
+    thisMonthsNews: [],
+  };
 
-  const todaysNews: NewsArticle[] = response.data.articles.map((news: any) => ({
-    title: news.title,
-    imageUrl: news.urlToImage || "there_is_an_image.jpg",
-  }));
+  try {
+    const currentDate = new Date();
+    const today = currentDate.toISOString().split("T")[0];
 
-  const weekUrl = `https://newsapi.org/v2/everything?from=${getStartOfWeek()}&to=${today}&sortBy=publishedAt&pageSize=10&apiKey=${apiKey}`;
-  const monthUrl = `https://newsapi.org/v2/everything?from=${getStartOfMonth()}&to=${today}&sortBy=publishedAt&pageSize=10&apiKey=${apiKey}`;
+    // Construct URLs
+    const url = `https://newsapi.org/v2/everything?from=${today}&to=${today}&sortBy=publishedAt&pageSize=10&apiKey=${apiKey}`;
+    const weekUrl = `https://newsapi.org/v2/everything?from=${getStartOfWeek()}&to=${today}&sortBy=publishedAt&pageSize=10&apiKey=${apiKey}`;
+    const monthUrl = `https://newsapi.org/v2/everything?from=${getStartOfMonth()}&to=${today}&sortBy=publishedAt&pageSize=10&apiKey=${apiKey}`;
 
-  const weekResponse = await axios.get(weekUrl);
-  const monthResponse = await axios.get(monthUrl);
+    // Fetch news data
+    const [todayResponse, weekResponse, monthResponse] = await Promise.all([
+      axios.get(url),
+      axios.get(weekUrl),
+      axios.get(monthUrl),
+    ]);
 
-  const thisWeeksNews: NewsArticle[] = weekResponse.data.articles.map(
-    (news: any) => ({
+    // Map response data
+    const todaysNews: NewsArticle[] = todayResponse.data.articles.map((news: any) => ({
       title: news.title,
-      imageUrl: news.urlToImage || "there_is_an_image.jpg",
-    })
-  );
-  const thisMonthsNews: NewsArticle[] = weekResponse.data.articles.map(
-    (news: any) => ({
-      title: news.title,
-      imageUrl: news.urlToImage || "there_is_an_image.jpg",
-    })
-  );
+      imageUrl: news.urlToImage || defaultImage,
+    }));
 
-  return { todaysNews, thisMonthsNews, thisWeeksNews };
+    const thisWeeksNews: NewsArticle[] = weekResponse.data.articles.map((news: any) => ({
+      title: news.title,
+      imageUrl: news.urlToImage || defaultImage,
+    }));
+
+    const thisMonthsNews: NewsArticle[] = monthResponse.data.articles.map((news: any) => ({
+      title: news.title,
+      imageUrl: news.urlToImage || defaultImage,
+    }));
+
+    return { todaysNews, thisWeeksNews, thisMonthsNews };
+  } catch (error) {
+    console.error("Error fetching news:", error);
+    return defaultNews; // Return default structure in case of an error
+  }
 }
+
+
 
 function getStartOfWeek(): string {
   const date = new Date();
@@ -62,7 +78,8 @@ function getStartOfMonth(): string {
 }
 
 export async function POST(request: Request) {
-  const apiKey = process.env.NEXT_PUBLIC_NEWSAPI_KEY || "";
+  dbConnect();
+  const apiKey = process.env.NEXT_PUBLIC_NEWSAPI_KEY||"";
   const currentDate = new Date();
   const today = currentDate.toISOString().split("T")[0];
 
@@ -73,9 +90,7 @@ export async function POST(request: Request) {
     existingData.lastUpdated.toISOString().split("T")[0] !== today
   ) {
     try {
-      const { todaysNews, thisMonthsNews, thisWeeksNews } = await fetchNews(
-        apiKey
-      );
+      const { todaysNews, thisMonthsNews, thisWeeksNews } = await fetchNews(apiKey);
       await NewsModel.updateOne(
         {},
         {
