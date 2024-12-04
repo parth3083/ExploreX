@@ -30,11 +30,11 @@ function HowItWorks() {
         insights to meet diverse and evolving needs.
       </h2>
 
-      <div className="w-full mt-10 md:flex-col md:gap-5 lg:flex-row flex flex-col items-center justify-between">
+      <div className="w-full mt-10 md:flex-col md:gap-5 lg:flex-row gap-5  flex flex-col items-center justify-between">
         {howitworksdata.map((items, index) => (
           <Card
             key={index}
-            className="lg:w-[32%] md:w-[70%] w-full h-56 flex flex-col    items-center"
+            className="lg:w-[32%] md:w-[70%] w-full h-56 flex flex-col   items-center"
           >
             <CardHeader>
               <Badge variant="secondary" className="w-fit">

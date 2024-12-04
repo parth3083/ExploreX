@@ -3,10 +3,12 @@ import GridPattern from "@/components/ui/grid-pattern";
 import CardElement from "@/components/Landing Page/CardElement";
 import HowItWorks from "@/components/Landing Page/HowItWorks";
 import Benefits from "@/components/Landing Page/Benefits";
+import Searchbar from "@/components/Landing Page/Searchbar";
 
 function LandingPage() {
   return (
     <div className="relative flex flex-col size-full items-center justify-center overflow-hidden rounded-lg border bg-background p-5 lg:p-20 md:shadow-xl mt-5">
+      <Searchbar/>
       <CardElement />
       <HowItWorks />
       <Benefits/>

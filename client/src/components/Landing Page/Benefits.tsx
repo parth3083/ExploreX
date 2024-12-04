@@ -35,16 +35,16 @@ function Benefits() {
         for individuals.
       </h2>
 
-      <Link href={"/home"}>
+    
         <Badge
           variant="secondary"
-          className="font-pop w-fit text-md bg-slate-700 text-white rounded-full mt-10 flex items-center"
+          className="font-pop w-fit text-md   rounded-full mt-10 flex items-center"
         >
           {" "}
           Let's go
           <IoIosArrowForward />
         </Badge>
-      </Link>
+      
 
       <div className="w-full items-center mx-auto  md:flex-col lg:flex-row flex-col md:items-center  flex flex-wrap gap-5 mt-5">
         {benefitsData.map((items, index) => (

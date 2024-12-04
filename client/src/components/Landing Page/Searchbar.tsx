@@ -54,12 +54,12 @@ function Searchbar() {
 
   return (
     <form
-      className="w-full lg:px-16 px-3 md:px-16  flex items-center gap-10"
+      className="w-full lg:px-16 px-3 md:px-16  mb-10 -mt-14 flex items-center gap-10"
       onSubmit={handleSubmit(onSubmit)}
     >
       <Input
         {...register("query", { required: true })}
-        placeholder="search here to unlock the answers that you're seeking..."
+        placeholder="Search here to unlock the answers that you're seeking..."
         className="lg:w-[50vw] md:w-[80vw] w-96"
       />
       <Button type="submit">
