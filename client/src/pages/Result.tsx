@@ -49,7 +49,7 @@ const Result = memo(() => {
                     key={ind}
                     className="p-2 border border-zinc-300 transition-all ease-in-out duration-300 hover:shadow-lg hover:shadow-zinc-600 rounded-md"
                   >
-                    <img
+                     <img
                       src={video.snippet.thumbnails.medium.url}
                       alt={`Thumbnail of ${video.snippet.title}`}
                       loading="lazy"

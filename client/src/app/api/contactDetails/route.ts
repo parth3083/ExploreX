@@ -7,19 +7,33 @@ export async function POST(req: Request) {
   try {
     const contactSchema = z.object({
       email: z.string().email(),
-      username: z.string().min(5, "Email must not be empty"),
+      username: z.string().min(5, "Username must not be empty"),
       review: z.string().min(5, "Review must not be empty"),
     });
 
     const parsedBody = contactSchema.parse(await req.json());
     const { username, email, review } = parsedBody;
-    const newContact = new contactModel({
-      email,
-      username,
-      review,
-    });
-    await newContact.save();
-    return Response.json({ message: "Review submitted successfully" });
+
+    const result = await contactModel.updateOne(
+      { email },
+      {
+        $push: { reviews: review },
+        $set: { username },
+      },
+      { upsert: true }
+    );
+
+    if (result.modifiedCount > 0 || result.upsertedCount > 0) {
+      return Response.json(
+        { message: "Review submitted successfully" },
+        { status: 200 }
+      );
+    } else {
+      return Response.json(
+        { message: "Review could not be added" },
+        { status: 400 }
+      );
+    }
   } catch (error) {
     if (error instanceof z.ZodError) {
       return Response.json({
@@ -28,6 +42,6 @@ export async function POST(req: Request) {
     }
     console.error(error);
 
-    return Response.json({ message: "Internal server error" });
+    return Response.json({ message: "Internal server error" }, { status: 400 });
   }
 }

@@ -7,7 +7,7 @@ import ClientWrapper from "@/components/ClientWrapper";
 import { ThemeProvider } from "@/components/theme-provider";
 import { StoreProvider } from "@/redux/StoreProvider";
 import LenisScroll from "./LenisScroll";
-
+import { Toaster } from "@/components/ui/toaster";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -32,29 +32,27 @@ export default function RootLayout({
 }>) {
   return (
     <StoreProvider>
-
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      <html lang="en" suppressHydrationWarning>
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
-           <LenisScroll />
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
+          <LenisScroll />
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
           >
-
-          <ClientWrapper>
-            <MaxWidth>
-              <Navbar />
-              {children}
-            </MaxWidth>
-          </ClientWrapper>
-
-        </ThemeProvider>
-      </body>
-    </html>
-          </StoreProvider>
+            <ClientWrapper>
+              <MaxWidth>
+                <Navbar />
+                {children}
+                <Toaster />
+              </MaxWidth>
+            </ClientWrapper>
+          </ThemeProvider>
+        </body>
+      </html>
+    </StoreProvider>
   );
 }

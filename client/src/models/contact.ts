@@ -3,7 +3,7 @@ import mongoose, { Schema, Document, Model } from "mongoose";
 interface Icontact extends Document {
   email: string;
   username: string;
-  review: string;
+  reviews: string[];
 }
 
 const contactSchema: Schema = new Schema(
@@ -17,8 +17,8 @@ const contactSchema: Schema = new Schema(
       type: String,
       required: true,
     },
-    review: {
-      type: String,
+    reviews: {
+      type: [String],
     },
   },
   {

@@ -16,6 +16,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import axios from "axios";
+import { useToast } from "@/hooks/use-toast";
 
 const formSchema = z.object({
   username: z.string().min(2, {
@@ -26,7 +27,7 @@ const formSchema = z.object({
 });
 
 function Contact() {
-  const { reset } = useForm();
+  const { toast } = useToast();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -39,9 +40,11 @@ function Contact() {
   async function action(values: {}) {
     try {
       const response = await axios.post("/api/contactDetails", values);
-      const response1 = await axios.post("/api/email", values);
-      console.log(response.data);
-      console.log(response1.data);
+      if (response.status === 200) {
+        toast({
+          description: "Your message has been sent",
+        });
+      }
     } catch (error) {
       console.log(error);
     }
@@ -49,7 +52,7 @@ function Contact() {
   function onSubmit(values: z.infer<typeof formSchema>) {
     try {
       action(values);
-      reset();
+      form.reset();
     } catch (error) {
       console.error(error);
     }
