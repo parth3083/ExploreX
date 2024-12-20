@@ -29,32 +29,31 @@ function Searchbar() {
   };
 
   const onSubmit: SubmitHandler<SearchFormValues> = (data) => {
-    try {
-      const { query } = data;
-      dispatch(setQuery(query))
-      searchCount(query)
-      .then(() => 
+    const { query } = data;
+
+    // Redirect immediately after form submission
+    router.push("/results");
+
+    // Perform API calls in the background
+    dispatch(setQuery(query));
+    searchCount(query)
+      .then(() =>
         Promise.all([
           dispatch(fetchYoutubeVideos(query)),
           dispatch(fetchGoogleSearchResults(query)),
-          dispatch(fetchBlogSearchResults(query))
+          dispatch(fetchBlogSearchResults(query)),
         ])
       )
-      .then(() => {
-        router.push("/results");
-      })
       .catch((error) => {
         console.error("Error occurred:", error);
       });
-      reset();
-    } catch (error) {
-      console.error(error);
-    }
+
+    reset();
   };
 
   return (
     <form
-      className="w-full lg:px-16 px-3 md:px-16  mb-10 -mt-14 flex items-center gap-10"
+      className="w-full lg:px-16 px-3 md:px-16 mb-10 -mt-14 flex items-center gap-10"
       onSubmit={handleSubmit(onSubmit)}
     >
       <Input
