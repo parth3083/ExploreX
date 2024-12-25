@@ -91,7 +91,7 @@ export default function Globe({
 
     setTimeout(() => (canvasRef.current!.style.opacity = "1"));
     return () => globe.destroy();
-  }, []);
+  }, );
 
   return (
     <div

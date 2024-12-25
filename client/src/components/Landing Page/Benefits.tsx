@@ -39,7 +39,7 @@ function Benefits() {
           className="font-pop w-fit text-md   rounded-full mt-10 flex items-center"
         >
           {" "}
-          Let's go
+          Let&apos;s go
           <IoIosArrowForward />
         </Badge>
       

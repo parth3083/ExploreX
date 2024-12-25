@@ -37,7 +37,7 @@ function Contact() {
     },
   });
 
-  async function action(values: {}) {
+  async function action(values: unknown) {
     try {
       const response = await axios.post("/api/contactDetails", values);
       if (response.status === 200) {

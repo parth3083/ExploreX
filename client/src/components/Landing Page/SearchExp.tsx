@@ -1,6 +1,7 @@
 import React from "react";
 import { cn } from "@/lib/utils";
 import Marquee from "@/components/ui/marquee";
+import Image from "next/image";
 
 const reviews = [
   {
